@@ -1,7 +1,12 @@
+server:
+  port: 56010 #启动端口 命令行注入
+management:
+  endpoints:
+    web:
+      exposure:
+        exclude: "*"
 spring:
   application:
-    name: nacos-config
-  cloud:
-    nacos:
-      config:
-        server-addr: 127.0.0.1:8848
+    name: nacos
+  profiles:
+    active: dev

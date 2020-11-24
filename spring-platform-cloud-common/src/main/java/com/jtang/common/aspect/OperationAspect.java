@@ -59,6 +59,7 @@ public class OperationAspect {
         try{
             object = proceedingJoinPoint.proceed();
         }catch (Throwable throwable){
+            throwable.printStackTrace();
             object =  ResultUtils.errorMsg(throwable.getMessage());
         }
         if(sysLog != null){
@@ -81,6 +82,7 @@ public class OperationAspect {
                 sysLog.setError(resultUtils.getMsg());
             }
         }catch (Exception error){
+            error.printStackTrace();
             sysLog.setError(error.getMessage());
         }
         // 调用日志写入接口

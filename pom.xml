@@ -14,7 +14,7 @@
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
-        <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
+        <spring-boot.version>2.2.5.RELEASE</spring-boot.version>
         <maven-compiler.version>3.8.1</maven-compiler.version>
         <maven-compiler-configuration.source.version>1.8</maven-compiler-configuration.source.version>
         <maven-compiler-configuration.target.version>1.8</maven-compiler-configuration.target.version>
@@ -25,13 +25,13 @@
         <mysql-version>8.0.21</mysql-version>
         <spring-cloud-alibaba-version>2.2.1.RELEASE</spring-cloud-alibaba-version>
         <freemarker-version>2.3.29</freemarker-version>
+        <druid-version>1.1.24</druid-version>
 
     </properties>
 
     <modules>
         <module>spring-platform-cloud-base</module>
         <module>spring-platform-cloud-common</module>
-        <module>spring-platform-cloud-eureka</module>
         <module>spring-platform-cloud-oauth</module>
         <module>spring-platform-cloud-account</module>
         <module>spring-platform-cloud-generator</module>
@@ -79,7 +79,6 @@
             <version>2.7</version>
         </dependency>
 
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
@@ -103,6 +102,22 @@
         <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
                 <version>${spring-cloud-alibaba-version}</version>
@@ -122,10 +137,18 @@
                 <artifactId>spring-platform-cloud-redisson</artifactId>
                 <version>${platform-version}</version>
             </dependency>
-            <!--  Redisson模块-->
+
+            <!--  测试模快-->
             <dependency>
                 <groupId>com.jtang</groupId>
                 <artifactId>spring-platform-cloud-nacos</artifactId>
+                <version>${platform-version}</version>
+            </dependency>
+
+            <!-- 定时任务模快-->
+            <dependency>
+                <groupId>com.jtang</groupId>
+                <artifactId>spring-platform-cloud-quartz</artifactId>
                 <version>${platform-version}</version>
             </dependency>
 
@@ -188,20 +211,11 @@
                 <version>${swagger-version}</version>
             </dependency>
 
+            <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid-version}</version>
             </dependency>
 
             <!--  Redission-->
@@ -210,9 +224,6 @@
                 <artifactId>redisson</artifactId>
                 <version>${redisson-version}</version>
             </dependency>
-
-
-
         </dependencies>
     </dependencyManagement>
 

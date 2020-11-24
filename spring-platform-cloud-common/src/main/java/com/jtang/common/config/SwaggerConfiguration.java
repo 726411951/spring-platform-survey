@@ -1,5 +1,6 @@
 package com.jtang.common.config;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -26,8 +27,8 @@ import java.util.List;
 public class SwaggerConfiguration {
 
     @Bean
+    @ConditionalOnMissingBean
     public Docket createRestApi() {
-
         ParameterBuilder ticketPar = new ParameterBuilder();
         List<Parameter> pars = new ArrayList<Parameter>();
         ticketPar.name("Authorization").description("访问令牌")
